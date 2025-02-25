@@ -6,13 +6,153 @@
 */
 /* Common styles */
 @import url('./reset.css');
-@import url('./base.css');
-@import url('./container.css');
-@import url('./animations.css');
 
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  box-sizing: border-box;
+}
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+  padding: 10px;
+}
+.to-do-app {
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 540px;
+  margin: 100px auto 20 px;
+  padding: 40px 30px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.main-heading {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.row-of-the-list {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 30px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 25px;
+}
+.to-do-list-input {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 20px;
+  border-radius: 30px;
+  width: 343px;
+  height: 44px;
+  border: 2px solid #ddd;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+.to-do-list-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+  animation: pulse-border 1.5s infinite alternate;
+}
+@keyframes pulse-border {
+  0% {
+    border-color: #3498db;
+    box-shadow: 0 0 5px #17b9c2;
+  }
+  100% {
+    border-color: #2012e2;
+    box-shadow: 0 0 15px #17b9c2;
+  }
+}
+.to-do-list-btn {
+  color: azure;
+  text-transform: uppercase;
+  font-weight: 700px;
+  background-color: rgb(114, 165, 224);
+  width: 70px;
+  height: 44px;
+  border-radius: 20px;
+  position: absolute;
+  left: 350px;
+  border: 2px solid #ddd;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+.to-do-list-btn:hover,
+.to-do-list-btn:focus {
+  border-color: #65baf3;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+  animation: pulse-border 1.5s infinite alternate;
+}
+.task-list-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid rgba(90, 88, 107, 0.2);
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.todo-checkbox {
+  appearance: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.checkmark {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #3498db;
+  display: inline-block;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.todo-item:hover .checkmark {
+  border-color: #1d6fa5;
+}
+
+.todo-checkbox:checked + .checkmark {
+  background-color: #3498db;
+  border-color: #3498db;
+}
+
+.todo-checkbox:checked + .checkmark::after {
+  content: '✔';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  transition: transform 0.2s ease-in-out;
+}
+
+.todo-checkbox:not(:checked) + .checkmark::after {
+  transform: translate(-50%, -50%) scale(0);
+}
